@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name          = 'czMatchmaker',
     packages      = ['czMatchmaker'], # this must be the same as the name above
-    version       = '0.1',
+    version       = '0.11',
     description   = 'Maximum likelihood estimates of electron transfer reaction parameters.',
     author        = 'Mateusz Krzysztof Lacki',
     author_email  = 'matteo.lacki@gmail.com',
