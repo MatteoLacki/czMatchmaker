@@ -22,7 +22,7 @@ from fragmentator import collect_fragments
 from collections import Counter
 from misc import crossprod, Round
 
-def analyze(data , Q, precursor_fasta):
+def czMatchmaker(data , Q, precursor_fasta):
     data = pd.read_csv("/Users/matteo/Documents/czMatchmaker/data/examplaryData.csv")
     data = DplyFrame(data)
     precursors = data >> \
