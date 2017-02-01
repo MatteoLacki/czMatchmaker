@@ -5,12 +5,15 @@ from pprint import pprint
 from collections import Counter
 from misc import crossprod, Round
 
-D = DplyFrame(pd.read_csv('data/synapt_substanceP_wh_wv_parsed.csv'))
+DF= pd.read_csv('/Users/matteo/Documents/czMatchmaker/data/synapt_substanceP_wh_wv_parsed.csv')
+D = DplyFrame(pd.read_csv('/Users/matteo/Documents/czMatchmaker/data/synapt_substanceP_wh_wv_parsed.csv'))
 D = D >> sift(X.estimates > 10) >> mutate( estimates = Round(X.estimates) )
 precursor_aa_seq = 'RPKPQQFFGLM'
 Q = 3
+data = D >> sift( X.wH == 80, X.wV == 300 ) >> \
+    select( X.tag, X.active, X.neutral, X.estimates, X.aa_break_from_N_term )
 
-data = D >> sift( X.wH == 80, X.wV == 300 )
+data = pd.DataFrame(data)
 
 def analyze(data):
 	precursors = data >> \
@@ -42,7 +45,7 @@ def analyze(data):
 
 	I_no_reactions = I_no_reactions.values.flatten()[0]
 
-		# This looks very very fishy.... 
+		# This looks very very fishy....
 		# ETnoD should be equal to this result.
 	prec_ETnoD_PTR_I = precursors >> \
 		sift( X.active != Q ) >> \
